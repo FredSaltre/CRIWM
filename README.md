@@ -16,4 +16,7 @@ Code associated to the paper "Estimating extinction time using radiocarbon dates
 
 - Sensitivity: R-script to examine the robustness of CRIWM and GRIWM. The script runs a sensitivity analysis in three stages by: <em>(i)</em> simulating times series of 14C dates for different sample sizes and time periods, <em>(ii)</em> comparing accuracy and precision of estimating extinction time by both methods, and <em>(iii)</em> evaluating the sensitivity (based on Hilbert-Schmidt Independence Criterion (HSIC, Gretton et al. 2005)) of such accuracy and precision to the statistical properties of the simulated time series. Accuracy = the difference between the simulated true extinction time and CRIWM’s (or GRIWM’s) estimate of extinction time (the lower the difference, the higher the accuracy). Precision = the width of the confidence interval around CRIWM’s (or GRIWM’s) estimate (the narrower the confidence interval, the higher the precision).
 
+*************************
+Frederik Saltre, Flinders University, frederik.saltre@flinders.edu.au April 2021
+
 ![Screen Shot 2022-04-19 at 4 08 06 pm](https://user-images.githubusercontent.com/46954120/163941223-e32cc3ce-5562-4de3-af6a-165c5adf8a15.png)
