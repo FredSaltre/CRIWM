@@ -1,0 +1,94 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# Rexinct
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+## Overview
+
+The package *Rextinct* computes extinction and arrival time using time series of dated observations
+by means of GRIWM (Gaussian-Resampled Inverse-Weighted McInerny Method) and CRIWM
+(Calibration-Resampled Inverse-Weighted McInerny Method)). GRIWM accounts for the normal
+error of each dated observation. CRIWM is a modified version of GRIWM that accounts for 
+the true probability density function (PDF) of radiocarbon dates and the normal error of non-radiocarbon dates.
+The package comprises three functions: *criwm* and *griwm* compute CRIWM and GRIWM, respectively, and
+*calendar* calibrates one or multiple radiocarbon dates and, for each radiocarbon date, computes 
+three intercepts (weighted average, median, mode in calendar years), PDF moments (mean, variance, skewness, kurtosis)
+and modality (statistically supported PDF modes with credible intervals).
+
+## Installation
+
+
+You can install the latest version of *Rextinct* from
+[GitHub](https://github.com/salvadorherrandoperez/Rextinct) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("salvadorherrandoperez/Rextinct")
+```
+
+## Example
+
+These are examples of how to run *criwm*, *griwm* and *calendar*.
+
+
+``` r
+#load package
+library(Rexinct)
+
+#########CRIWM AND GRIWM EXAMPLES
+####DATASET = simulate time series of 50 dated observations
+####dates sampled randomly from 1000 to 10000 years Before Present
+dates <- sample(c(1000:10000), size = 50) 
+####errors (1SD) sampled randomly from 10 to 150 years
+errors <- sample(c(10:150), size = 50) 
+#create object with time series of dates (column 1) and errors (column 2) without row and column names
+TimeSeries <- data.frame(dates, errors)
+#save time series to working directory
+write.table(TimeSeries, file = "TimeSeries.txt", row.names = FALSE, col.names = FALSE)
+
+####CRIWM extinction time (calibration done with IntCal20 by default = Northern Hemisphere data)
+#### Assume1 to 40 and 43 = non-cal  radiocarbon (14C) dates, remaining = non-14C or 14C-cal dates
+criwm(chrono_data = "TimeSeries.txt", radiocarbon = c(1:40, 43))
+####CRIWM arrival time (calibration done with IntCal20 by default = Northern Hemisphere data)
+criwm(chrono_data = "TimeSeries.txt", signor_lipps = "arr", radiocarbon = c(1:40, 43))
+####CRIWM extinction time assuming all dates are non-calibrated radiocarbon (radiocarbon = "all")
+criwm(chrono_data = "TimeSeries.txt")
+####CRIWM extinction time assuming all dates are calibrated radiocarbon (radiocarbon = "all")
+criwm(chrono_data = "TimeSeries.txt", calibra = FALSE)
+
+####GRIWM extinction time (calibration done with SHCal20 = Southern Hemisphere data)
+griwm(chrono_data = "TimeSeries.txt", radiocarbon = c(1:40, 43), cal_curve = "shcal20")
+####GRIWM arrival time (calibration done with SHCal20 = Southern Hemisphere data) and assume all dates are radiocarbon
+griwm(chrono_data = "TimeSeries.txt", signor_lipps = "arr", radiocarbon = "all", cal_curve = "shcal20")
+####GRIWM extinction time using non-biased estimator 
+griwm(chrono_data = "TimeSeries.txt", biased = FALSE)
+
+
+#########CALIBRATION EXAMPLES
+#### DATASET = create unique coding identifiers for each observation
+#### Assume all 50 observations are non-calibrated radiocarbon dates
+#### column 1 = dates, column 2 = errors, column 3 = ids
+ids <- paste("date", c(1:50), sep = "")
+TimeSeries_cal1 <- data.frame(dates, errors, ids)
+#save radiocarbon dates to working directory
+write.table(TimeSeries_cal1, file = "TimeSeries_cal1.txt", row.names = FALSE, col.names = FALSE)
+#calibrate with IntCal20 and 1SD calibration errors (default) and save intercepts (weighted average, median, mode) to working directory (default)
+calendar(chrono_data = "TimeSeries_cal1.txt")
+#calibrate with SHCal20 (Southern Hemisphere samples), compute 2SD calibration errors (default) and cancel output saving
+calendar(chrono_data = "TimeSeries_cal1.txt", cal_curve = "shcal20", cal_ci = "sd2", cal_save = "none")
+
+#### DATASET = assign calibration curve to each observation
+#### Assume all 50 observations are non-calibrated radiocarbon dates
+#### Assume 1 to 20 and 31-50 from Northern Hemisphere, and 21 to 20 from Southern Hemisphere
+#### column 1 = dates, column 2 = errors, column 3 = ids, column 4 = calibration curves
+calib_curves <- c(rep("intcal20", 20), rep("shcal20", 10), rep("shcal20", 20))
+TimeSeries_cal2 <- data.frame(dates, errors, ids, calib_curves)  
+#save radiocarbon dates to working directory
+write.table(TimeSeries_cal2, file = "TimeSeries_cal2.txt", row.names = FALSE, col.names = FALSE)
+#calibrate samples, and save full outputs (PDF moments, multimodality, intercepts)
+calendar(chrono_data = "TimeSeries_cal2.txt", cal_curve = "shcal20", cal_save = "full")
+
+```

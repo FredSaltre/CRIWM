@@ -1,0 +1,21 @@
+Package: Rexinct
+Type: Package
+Title: Estimation of Extinction Time using Radiocarbon Dates
+Version: 1.1.0
+Date: 2021-06-01
+Authors@R: c(
+    person("Salvador", family = "Herrando-Perez", email = "salherra@gmail.com",
+           role = c("aut", "cre"), comment = c(ORCID = "0000-0001-6052-6854")),
+    person("Frederik", family = "Saltre", email = "frederik.saltre@gmail.com",
+           role = c("ctb"), comment = c(ORCID = "0000-0002-5040-3911")))
+Maintainer: Salvador Herrando-Perez <salherra@gmail.com>       
+Description: Calibration of radiocarbon dates and computation of extinction and invasion times using time series of dated observations, with emphasis on radiocarbon chronologies.
+Language: en-GB
+License: MIT + file LICENSE
+Encoding: UTF-8
+Depends: R (>= 3.6.0)
+Imports: 
+    data.table,
+    moments,
+    rcarbon
+RoxygenNote: 7.1.2
