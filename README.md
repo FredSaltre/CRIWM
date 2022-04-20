@@ -16,6 +16,12 @@ Code associated to the paper "Estimating extinction time using radiocarbon dates
 
 - Sensitivity: R-script to examine the robustness of CRIWM and GRIWM. The script runs a sensitivity analysis in three stages by: <em>(i)</em> simulating times series of 14C dates for different sample sizes and time periods, <em>(ii)</em> comparing accuracy and precision of estimating extinction time by both methods, and <em>(iii)</em> evaluating the sensitivity (based on Hilbert-Schmidt Independence Criterion (HSIC, Gretton et al. 2005)) of such accuracy and precision to the statistical properties of the simulated time series. Accuracy = the difference between the simulated true extinction time and CRIWM’s (or GRIWM’s) estimate of extinction time (the lower the difference, the higher the accuracy). Precision = the width of the confidence interval around CRIWM’s (or GRIWM’s) estimate (the narrower the confidence interval, the higher the precision).
 
+
+## Data:
+
+moa210_holdaway.txt: moa 14C dates spanning 564 to 5,503 14C years BP obtained from 270 fossils collected on the South Island of New Zealand. Ref:  Holdaway, R.N., Allentoft, M.E., Jacomb, C., Oskam, C.L., Beavan, N.R. & Bunce, M. (2014) An extremely low-density human population exterminated New Zealand moa. Nature Communications, 5, 5436. https://doi.org/10.1038/ncomms6436
+
+
 *************************
 Frederik Saltre, Flinders University, frederik.saltre@flinders.edu.au April 2021
 
