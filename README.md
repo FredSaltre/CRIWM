@@ -14,12 +14,14 @@ Code associated to the paper "Estimating extinction time using radiocarbon dates
 
 - Rextinct: contains the R package <em>Rextinct</em> (with three user-friendly functions) designed  for computing CRIWM (error-distribution free), and its sister method GRIWM (normal dating errors), and for calibrating 14C dates, respectively. The package accepts observations (fossils, sightings) dated by any combination of other chronometric methods. For 14C chronologies, Rextinct handles fossil dates from the Northern and Southern Hemispheres and marine environments as they require specific 14C calibrations. 
 
-- Sensitivity: R-script to examine the robustness of CRIWM and GRIWM. The script runs a sensitivity analysis in three stages by: <em>(i)</em> simulating times series of 14C dates for different sample sizes and time periods, <em>(ii)</em> comparing accuracy and precision of estimating extinction time by both methods, and <em>(iii)</em> evaluating the sensitivity (based on Hilbert-Schmidt Independence Criterion (HSIC, Gretton et al. 2005)) of such accuracy and precision to the statistical properties of the simulated time series. Accuracy = the difference between the simulated true extinction time and CRIWM’s (or GRIWM’s) estimate of extinction time (the lower the difference, the higher the accuracy). Precision = the width of the confidence interval around CRIWM’s (or GRIWM’s) estimate (the narrower the confidence interval, the higher the precision).
+- Sensitivity: R-script to examine the robustness of CRIWM and GRIWM. The script runs a sensitivity analysis in three stages by: <em>(i)</em> simulating times series of 14C dates for different sample sizes and time periods, <em>(ii)</em> comparing accuracy and precision of estimating extinction time by both methods, and <em>(iii)</em> evaluating the sensitivity (based on Hilbert-Schmidt Independence Criterion (HSIC, Gretton et al. 2005) of such accuracy and precision to the statistical properties of the simulated time series. Accuracy = the difference between the simulated true extinction time and CRIWM’s (or GRIWM’s) estimate of extinction time (the lower the difference, the higher the accuracy). Precision = the width of the confidence interval around CRIWM’s (or GRIWM’s) estimate (the narrower the confidence interval, the higher the precision).
 
 
 ## Data:
 
-moa210_holdaway.txt: moa 14C dates spanning 564 to 5,503 14C years BP obtained from 270 fossils collected on the South Island of New Zealand. Ref:  Holdaway, R.N., Allentoft, M.E., Jacomb, C., Oskam, C.L., Beavan, N.R. & Bunce, M. (2014) An extremely low-density human population exterminated New Zealand moa. Nature Communications, 5, 5436. https://doi.org/10.1038/ncomms6436
+<em>moa210_holdaway.txt</em>: moa 14C dates spanning 564 to 5,503 14C years BP obtained from 270 fossils collected on the South Island of New Zealand (Holdaway et al., 2014). 
+
+Reference:  Holdaway, R.N., Allentoft, M.E., Jacomb, C., Oskam, C.L., Beavan, N.R. & Bunce, M. (2014) An extremely low-density human population exterminated New Zealand moa. Nature Communications, 5, 5436. https://doi.org/10.1038/ncomms6436
 
 
 *************************
