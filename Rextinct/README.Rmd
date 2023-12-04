@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Rexinct
+# Rextinct
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -36,7 +36,7 @@ These are examples of how to run *criwm*, *griwm* and *calendar*.
 
 ``` r
 #load package
-library(Rexinct)
+library(Rextinct)
 
 #########CRIWM AND GRIWM EXAMPLES
 ####DATASET = simulate time series of 50 dated observations

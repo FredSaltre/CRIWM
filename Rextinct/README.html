@@ -366,8 +366,8 @@ pre code {
 
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<div id="rexinct" class="section level1">
-<h1>Rexinct</h1>
+<div id="rextinct" class="section level1">
+<h1>Rextinct</h1>
 <!-- badges: start -->
 <!-- badges: end -->
 <div id="overview" class="section level2">
@@ -399,14 +399,14 @@ devtools::install_github(&quot;salvadorherrandoperez/Rextinct&quot;)</code></pre
 <p>These are examples of how to run <em>criwm</em>, <em>griwm</em> and
 <em>calendar</em>.</p>
 <pre class="r"><code>#load package
-library(Rexinct)
+library(Rextinct)
 
 #########CRIWM AND GRIWM EXAMPLES
 ####DATASET = simulate time series of 50 dated observations
 ####dates sampled randomly from 1000 to 10000 years Before Present
-dates &lt;- sample(c(1000:10000), size = 50) 
+dates &lt;- sample(c(1000:10000), size = 50)
 ####errors (1SD) sampled randomly from 10 to 150 years
-errors &lt;- sample(c(10:150), size = 50) 
+errors &lt;- sample(c(10:150), size = 50)
 #create object with time series of dates (column 1) and errors (column 2) without row and column names
 TimeSeries &lt;- data.frame(dates, errors)
 #save time series to working directory
@@ -426,7 +426,7 @@ criwm(chrono_data = &quot;TimeSeries.txt&quot;, calibra = FALSE)
 griwm(chrono_data = &quot;TimeSeries.txt&quot;, radiocarbon = c(1:40, 43), cal_curve = &quot;shcal20&quot;)
 ####GRIWM arrival time (calibration done with SHCal20 = Southern Hemisphere data) and assume all dates are radiocarbon
 griwm(chrono_data = &quot;TimeSeries.txt&quot;, signor_lipps = &quot;arr&quot;, radiocarbon = &quot;all&quot;, cal_curve = &quot;shcal20&quot;)
-####GRIWM extinction time using non-biased estimator 
+####GRIWM extinction time using non-biased estimator
 griwm(chrono_data = &quot;TimeSeries.txt&quot;, biased = FALSE)
 
 
@@ -448,7 +448,7 @@ calendar(chrono_data = &quot;TimeSeries_cal1.txt&quot;, cal_curve = &quot;shcal2
 #### Assume 1 to 20 and 31-50 from Northern Hemisphere, and 21 to 20 from Southern Hemisphere
 #### column 1 = dates, column 2 = errors, column 3 = ids, column 4 = calibration curves
 calib_curves &lt;- c(rep(&quot;intcal20&quot;, 20), rep(&quot;shcal20&quot;, 10), rep(&quot;shcal20&quot;, 20))
-TimeSeries_cal2 &lt;- data.frame(dates, errors, ids, calib_curves)  
+TimeSeries_cal2 &lt;- data.frame(dates, errors, ids, calib_curves)
 #save radiocarbon dates to working directory
 write.table(TimeSeries_cal2, file = &quot;TimeSeries_cal2.txt&quot;, row.names = FALSE, col.names = FALSE)
 #calibrate samples, and save full outputs (PDF moments, multimodality, intercepts)
